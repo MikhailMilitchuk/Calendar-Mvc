@@ -1,0 +1,70 @@
+﻿@model CalendarMvcWebApplication.ViewModel.CalendarViewModel
+<div class="calendar">
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th class="sub">
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="1">Январь</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="2">Февраль</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="3">Март</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="4">Апрель</a>
+            </th>
+        </tr
+        <tr>
+            <th class="sub">
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="5">Май</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="6">Июнь</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="7">Июль</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="8">Август</a>
+            </th>
+        </tr>
+        <tr>
+            <th class="sub">
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="9">Сентябрь</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="10">Октябрь</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="11">Ноябрь</a>
+            </th>
+            <th>
+                <a asp-area="" asp-controller="Home" asp-action="Calendar" asp-route-id="12">Декабрь</a>
+            </th>
+        </tr>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0">
+        <tr>
+            <th>Пн</th>
+            <th>Вт</th>
+            <th>Ср</th>
+            <th>Чт</th>
+            <th>Пт</th>
+            <th>Сб</th>
+            <th>Вс</th>
+        </tr>
+        @for (int i = 0; i != this.Model.Days.GetLength(0); i++)
+        {
+            <tr>
+                @for (int j = 0; j != this.Model.Days.GetLength(1); j++)
+                {
+                    <td>
+                        @Html.Partial("_Day", this.Model.Days[i, j])
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div> 
