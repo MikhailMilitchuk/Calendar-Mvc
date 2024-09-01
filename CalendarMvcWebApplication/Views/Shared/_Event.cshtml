@@ -1,0 +1,31 @@
+﻿@model CalendarMvcWebApplication.ViewModel.EventViewModel
+<div class="event">
+    @Model!.Date.ToString("HH:mm")
+    @Model!.Name
+    <button data-modal-id="@Model.Id" class="open-modal" style="font-size : 10px; width: 30px; height: 30px;">Ред.</button>
+    <div id="@Model.Id" class="modal">
+        <span class="modal-close">
+            <svg viewbox="0 0 40 40">
+                <path class="close-x" d="M 10,10 L 30,30 M 30,10 L 10,30" />
+            </svg>
+        </span>
+        <form asp-controller="Calendar" asp-action="Edit" method="post">
+            <input class="form-control" type="number" data-val="true" hidden="true"
+                   id="Id" name="Id" value="@Model!.Id"><br>
+            Время:
+            <input class="form-control" type="datetime" data-val="true"
+                   data-val-required="Введите время для напоминания."
+                   id="Date" name="Date" value="@Model!.Date"><br>
+            Заметка:
+            <input class="form-control" type="text" data-val="true"
+                   data-val-required="Введите текст заметки."
+                   id="Name" name="Name" value="@Model!.Name"><br>
+            <button class="form-control" type="submit">Сохранить</button>
+        </form>
+        <form asp-controller="Calendar" asp-action="Delete" method="post">
+            <input class="form-control" type="number" data-val="true" hidden="true"
+                   id="Id" name="Id" value="@Model!.Id"><br>
+            <button class="form-control" type="submit">Удалить</button>
+        </form>
+    </div>
+</div>

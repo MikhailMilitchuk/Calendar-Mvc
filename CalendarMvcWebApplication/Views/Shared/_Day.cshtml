@@ -1,0 +1,12 @@
+﻿@model CalendarMvcWebApplication.ViewModel.DayViewModel
+<div class="day @(this.Model.IsNotCurrentMonth ? "not-current-month" : null) @(this.Model.IsWeekendOrHoliday ? "weekend-or-holiday" : null) @(this.Model.IsToday ? "today" : null)">
+    <div class="date">
+         @ViewData["EventDay"]
+    </div>
+    <div class="events">
+        @foreach (var @event in this.Model.Events)
+        {
+            @Html.Partial("_Event", @event)
+        }
+    </div>
+</div>
